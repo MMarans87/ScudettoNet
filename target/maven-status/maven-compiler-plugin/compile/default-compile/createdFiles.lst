@@ -1,0 +1,10 @@
+scudettoNet\client\RestConfig.class
+scudettoNet\controller\ScudettoNetController.class
+scudettoNet\client\FileUtilities.class
+scudettoNet\ScudettoNetApp.class
+scudettoNet\utility\Constants.class
+scudettoNet\model\Player.class
+scudettoNet\transformations\PlayersFilter.class
+scudettoNet\utility\ScudettoNetUtils.class
+scudettoNet\service\ScudettoNetService.class
+scudettoNet\model\errors\GenericError.class

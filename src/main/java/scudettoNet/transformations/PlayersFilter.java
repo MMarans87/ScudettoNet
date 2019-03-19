@@ -9,14 +9,30 @@ import scudettoNet.model.Player;
 
 public class PlayersFilter {
 
-	public static List<Player> filterByid(List<Player> playerList, int id) {
-		List<Player> filteredPlayerList = new ArrayList<>();
-		for (Player player : ListUtils.emptyIfNull(playerList)) {
-			if (player.compareId(id)) {
-				filteredPlayerList.add(player);
+	public static List<Player> filterById(List<Player> playerList, Integer id) {
+		if (id != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.compareId(id)) {
+					filteredPlayerList.add(player);
+				}
 			}
+			playerList = filteredPlayerList;
 		}
-		return filteredPlayerList;
+		return playerList;
+	}
+
+	public static List<Player> filterByTeam(List<Player> playerList, String team) {
+		if (team != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.getTeam().toUpperCase().contains(team.toUpperCase())) {
+					filteredPlayerList.add(player);
+				}
+			}
+			playerList = filteredPlayerList;
+		}
+		return playerList;
 	}
 
 }
