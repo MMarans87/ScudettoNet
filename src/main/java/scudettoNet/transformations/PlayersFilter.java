@@ -35,4 +35,17 @@ public class PlayersFilter {
 		return playerList;
 	}
 
+	public static List<Player> filterByName(List<Player> playerList, String name) {
+		if (name != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.getName().toUpperCase().contains(name.toUpperCase())) {
+					filteredPlayerList.add(player);
+				}
+			}
+			playerList = filteredPlayerList;
+		}
+		return playerList;
+	}
+
 }

@@ -29,10 +29,9 @@ public class ScudettoNetService {
 			if (!ScudettoNetUtils.evaluateIfFilter(id, team, name, role, freeAgent)) {
 				return playerList;
 			}
-			
 			playerList = PlayersFilter.filterById(playerList, id);
 			playerList = PlayersFilter.filterByTeam(playerList, team);
-
+			playerList = PlayersFilter.filterByName(playerList, name);
 			return playerList;
 		} catch (Exception e) {
 			throw new GenericError("Generic Error: " + e.getMessage(), e);
