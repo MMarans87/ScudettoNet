@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import scudettoNet.client.FileUtilities;
+import scudettoNet.model.Help;
 import scudettoNet.model.Player;
 import scudettoNet.model.errors.GenericError;
 import scudettoNet.transformations.PlayersFilter;
@@ -33,6 +34,17 @@ public class ScudettoNetService {
 			playerList = PlayersFilter.filterByTeam(playerList, team);
 			playerList = PlayersFilter.filterByName(playerList, name);
 			return playerList;
+		} catch (Exception e) {
+			throw new GenericError("Generic Error: " + e.getMessage(), e);
+		}
+	}
+
+	public Help retrieveHelp(String operation) throws GenericError {
+		try {
+			Help help = new Help();
+			help.setHelp(Constants.PLAYER_HELP);
+			help.setOperation(operation);
+			return help;
 		} catch (Exception e) {
 			throw new GenericError("Generic Error: " + e.getMessage(), e);
 		}
