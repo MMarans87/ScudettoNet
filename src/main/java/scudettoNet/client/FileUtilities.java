@@ -39,9 +39,13 @@ public class FileUtilities {
 		return Constants.PREFIX_PATH + fileName.toLowerCase();
 	}
 
-	public static List<Player> readPlayerList(String fileName) throws JsonParseException, JsonMappingException, IOException {
+	public static List<Player> readPlayerList(String fileName, String useInternalString) throws JsonParseException, JsonMappingException, IOException {
 		ObjectMapper obj = new ObjectMapper();
+		if (Constants.Y.equalsIgnoreCase(useInternalString)) {
+			return Arrays.asList(obj.readValue(Constants.PLAYER_LIST, Player[].class));
+		}
 		String readResponseFromFile = readResponseFromFile(fileName);
 		return Arrays.asList(obj.readValue(readResponseFromFile, Player[].class));
 	}
+
 }

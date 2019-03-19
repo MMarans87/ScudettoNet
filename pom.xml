@@ -11,7 +11,7 @@
 
 	<groupId>scudettoNet</groupId>
 	<artifactId>scudettoNet</artifactId>
-	<version>1.0</version>
+	<version>0.1</version>
 	<name>scudettoNet</name>
 
 	<dependencies>
