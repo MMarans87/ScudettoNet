@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import scudettoNet.client.FileUtilities;
-import scudettoNet.model.Help;
 import scudettoNet.model.Player;
+import scudettoNet.model.enumeration.RoleEnum;
 import scudettoNet.model.errors.GenericError;
 import scudettoNet.transformations.PlayersFilter;
 import scudettoNet.utility.Constants;
@@ -23,7 +23,7 @@ public class ScudettoNetService {
 	
 	public static final Logger logger = LoggerFactory.getLogger(ScudettoNetService.class);
 
-	public List<Player> retrievePlayerList(Integer id, String team, String name, String role, Boolean freeAgent) throws GenericError {
+	public List<Player> retrievePlayerList(Integer id, String team, String name, RoleEnum role, Boolean freeAgent, Integer maxValue) throws GenericError {
 		try {
 
 			List<Player> playerList = FileUtilities.readPlayerList(Constants.PLAYER_LIST_PATH, useInternalString);
@@ -33,18 +33,12 @@ public class ScudettoNetService {
 			playerList = PlayersFilter.filterById(playerList, id);
 			playerList = PlayersFilter.filterByTeam(playerList, team);
 			playerList = PlayersFilter.filterByName(playerList, name);
-			return playerList;
-		} catch (Exception e) {
-			throw new GenericError("Generic Error: " + e.getMessage(), e);
-		}
-	}
+			playerList = PlayersFilter.filterByRole(playerList, role);
+			playerList = PlayersFilter.filterByMaxValue(playerList, maxValue);
+			playerList = PlayersFilter.filterByStatus(playerList, freeAgent);
 
-	public Help retrieveHelp(String operation) throws GenericError {
-		try {
-			Help help = new Help();
-			help.setHelp(Constants.PLAYER_HELP);
-			help.setOperation(operation);
-			return help;
+			
+			return playerList;
 		} catch (Exception e) {
 			throw new GenericError("Generic Error: " + e.getMessage(), e);
 		}

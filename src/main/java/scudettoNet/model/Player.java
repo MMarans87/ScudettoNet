@@ -13,6 +13,7 @@ public class Player {
 	private String mantra;
 	private String name;
 	private String team;
+	private Boolean status;
 	private int value;
 
 	public int getId() {
@@ -71,13 +72,20 @@ public class Player {
 		this.value = value;
 	}
 
-	@Override
-	public String toString() {
-		return "Player [id=" + id + ", idFantaGazzetta=" + idFantaGazzetta + ", role=" + role + ", mantra=" + mantra + ", name=" + name + ", team=" + team + ", value=" + value + "]";
+	public Boolean getStatus() {
+		return status;
 	}
 
-	
-	/** CUSTOM METHODS**/
+	public void setStatus(Boolean status) {
+		this.status = status;
+	}
+
+	@Override
+	public String toString() {
+		return "Player [id=" + id + ", idFantaGazzetta=" + idFantaGazzetta + ", role=" + role + ", mantra=" + mantra + ", name=" + name + ", team=" + team + ", status=" + status + ", value=" + value + "]";
+	}
+
+	/** CUSTOM METHODS **/
 	public boolean compareId(int id) {
 		return String.valueOf(id).equals(String.valueOf(this.getId()));
 	}

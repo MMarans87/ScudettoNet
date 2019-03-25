@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.commons.collections4.ListUtils;
 
 import scudettoNet.model.Player;
+import scudettoNet.model.enumeration.RoleEnum;
 
 public class PlayersFilter {
 
@@ -40,6 +41,45 @@ public class PlayersFilter {
 			List<Player> filteredPlayerList = new ArrayList<>();
 			for (Player player : ListUtils.emptyIfNull(playerList)) {
 				if (player.getName().toUpperCase().contains(name.toUpperCase())) {
+					filteredPlayerList.add(player);
+				}
+			}
+			playerList = filteredPlayerList;
+		}
+		return playerList;
+	}
+
+	public static List<Player> filterByRole(List<Player> playerList, RoleEnum role) {
+		if (role != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.getRole().toUpperCase().contains(role.value().toUpperCase())) {
+					filteredPlayerList.add(player);
+				}
+			}
+			playerList = filteredPlayerList;
+		}
+		return playerList;
+	}
+
+	public static List<Player> filterByMaxValue(List<Player> playerList, Integer maxValue) {
+		if (maxValue != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.getValue() <= maxValue) {
+					filteredPlayerList.add(player);
+				}
+			}
+			playerList = filteredPlayerList;
+		}
+		return playerList;
+	}
+
+	public static List<Player> filterByStatus(List<Player> playerList, Boolean freeAgent) {
+		if (freeAgent != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.getStatus().equals(freeAgent)) {
 					filteredPlayerList.add(player);
 				}
 			}
