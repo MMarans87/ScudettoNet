@@ -88,4 +88,17 @@ public class PlayersFilter {
 		return playerList;
 	}
 
+	public static List<Player> filterByMaxSalary(List<Player> playerList, Integer maxSalary) {
+		if (maxSalary != null) {
+			List<Player> filteredPlayerList = new ArrayList<>();
+			for (Player player : ListUtils.emptyIfNull(playerList)) {
+				if (player.getValue() <= maxSalary) {
+					filteredPlayerList.add(player);
+				}
+			}
+			playerList = filteredPlayerList;
+		}
+		return playerList;
+	}
+
 }

@@ -14,7 +14,8 @@ public class Player {
 	private String name;
 	private String team;
 	private Boolean status;
-	private int value;
+	private Integer value;
+	private Integer salary;
 
 	public int getId() {
 		return id;
@@ -64,12 +65,8 @@ public class Player {
 		this.team = team;
 	}
 
-	public int getValue() {
+	public Integer getValue() {
 		return value;
-	}
-
-	public void setValue(int value) {
-		this.value = value;
 	}
 
 	public Boolean getStatus() {
@@ -80,9 +77,21 @@ public class Player {
 		this.status = status;
 	}
 
+	public Integer getSalary() {
+		return salary;
+	}
+
+	public void setSalary(Integer salary) {
+		this.salary = salary;
+	}
+
+	public void setValue(Integer value) {
+		this.value = value;
+	}
+
 	@Override
 	public String toString() {
-		return "Player [id=" + id + ", idFantaGazzetta=" + idFantaGazzetta + ", role=" + role + ", mantra=" + mantra + ", name=" + name + ", team=" + team + ", status=" + status + ", value=" + value + "]";
+		return "Player [id=" + id + ", idFantaGazzetta=" + idFantaGazzetta + ", role=" + role + ", mantra=" + mantra + ", name=" + name + ", team=" + team + ", status=" + status + ", value=" + value + ", salary=" + salary + "]";
 	}
 
 	/** CUSTOM METHODS **/

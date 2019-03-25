@@ -40,12 +40,12 @@ public class ScudettoNetController {
 	 * @throws GenericError
 	 */
 	@RequestMapping(value = "/players", method = RequestMethod.GET)
-	public @ResponseBody ResponseEntity<List<Player>> getPlayers(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "team", required = false) String team, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "role", required = false) RoleEnum role, @RequestParam(name = "freeAgent", required = false) Boolean freeAgent, @RequestParam(name = "maxValue", required = false) Integer maxValue) throws JsonParseException, JsonMappingException, IOException, GenericError {
+	public @ResponseBody ResponseEntity<List<Player>> getPlayers(@RequestParam(name = "id", required = false) Integer id, @RequestParam(name = "team", required = false) String team, @RequestParam(name = "name", required = false) String name, @RequestParam(name = "role", required = false) RoleEnum role, @RequestParam(name = "freeAgent", required = false) Boolean freeAgent, @RequestParam(name = "maxValue", required = false) Integer maxValue, @RequestParam(name = "maxSalary", required = false) Integer maxSalary) throws JsonParseException, JsonMappingException, IOException, GenericError {
 
 		System.out.println("Retrieve Player List with parameters: ");
 		System.out.println("id:" + id + " ,team:" + team + " ,name:" + name + " ,role:" + role + " ,freeAgent:" + freeAgent);
 		HttpStatus status = HttpStatus.OK;
-		List<Player> playerList = service.retrievePlayerList(id, team, name, role, freeAgent, maxValue);
+		List<Player> playerList = service.retrievePlayerList(id, team, name, role, freeAgent, maxValue, maxSalary);
 		System.out.println("Retrieved Player List");
 		return new ResponseEntity<>(playerList, status);
 	}

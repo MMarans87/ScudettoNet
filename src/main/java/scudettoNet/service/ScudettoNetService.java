@@ -23,7 +23,7 @@ public class ScudettoNetService {
 	
 	public static final Logger logger = LoggerFactory.getLogger(ScudettoNetService.class);
 
-	public List<Player> retrievePlayerList(Integer id, String team, String name, RoleEnum role, Boolean freeAgent, Integer maxValue) throws GenericError {
+	public List<Player> retrievePlayerList(Integer id, String team, String name, RoleEnum role, Boolean freeAgent, Integer maxValue, Integer maxSalary) throws GenericError {
 		try {
 
 			List<Player> playerList = FileUtilities.readPlayerList(Constants.PLAYER_LIST_PATH, useInternalString);
@@ -35,6 +35,7 @@ public class ScudettoNetService {
 			playerList = PlayersFilter.filterByName(playerList, name);
 			playerList = PlayersFilter.filterByRole(playerList, role);
 			playerList = PlayersFilter.filterByMaxValue(playerList, maxValue);
+			playerList = PlayersFilter.filterByMaxSalary(playerList, maxSalary);
 			playerList = PlayersFilter.filterByStatus(playerList, freeAgent);
 
 			
